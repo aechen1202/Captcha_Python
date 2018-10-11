@@ -58,7 +58,7 @@ print(model.summary())
 model.compile(loss='categorical_crossentropy',
               optimizer='adam',metrics=['accuracy']) 
 train_history=model.fit(x=x_Train4D_normalize,y=y_Train_OneHot,validation_split=0.2
-                        ,epochs=20, batch_size=300,verbose=2)
+                        ,epochs=5, batch_size=300,verbose=2)
 import matplotlib.pyplot as plt
 def show_train_history(train_acc,test_acc):
     plt.plot(train_history.history[train_acc])
@@ -81,19 +81,20 @@ print(prediction[:x_Test4D_normalize.shape[0]-1])
 
 #查看預測結果
 import matplotlib.pyplot as plt
-def plot_images_labels_prediction(images,labels,prediction,idx,num):
+def plot_images_labels_prediction(images,labels,prediction,idx,num,showNunList):
     fig = plt.gcf()
     fig.set_size_inches(12, 14)
-    #if num>25: num=25 
     for i in range(0, num):
-        ax=plt.subplot(200,5, 1+i)
-        ax.imshow(images[idx], cmap='binary')
+        ax=plt.subplot(5,6, 1+i)
+        ax.imshow(images[showNunList[idx]], cmap='binary')
 
-        ax.set_title("label=" +str(labels[idx])+
-                     ",predict="+str(prediction[idx])
+        ax.set_title("label=" +str(labels[showNunList[idx]])+
+                     ",predict="+str(prediction[showNunList[idx]])
                      ,fontsize=10) 
         
         ax.set_xticks([]);ax.set_yticks([])        
         idx+=1 
     plt.show()
-plot_images_labels_prediction(x_Test,y_Test_label,prediction,0,x_Test.shape[0])
+
+showNunList=np.array([0,1,2,100,101,102,200,201,202,300,301,302,400,401,402,500,501,502,600,601,602,700,701,702,800,801,802,900,901,902])
+plot_images_labels_prediction(x_Test,y_Test_label,prediction,0,showNunList.shape[0],showNunList)
