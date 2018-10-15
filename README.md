@@ -3,7 +3,7 @@
 利用Tensorflow Keras模組CNN卷積學習辨識Captcha驗證碼圖片 
 
 ## 系統流程
-0.Captcha_MLP.py:多層感知機(辨識成功率70%) , Captcha_CNN.py:CNN卷積學習(辨識成功率100%)
+0.Captcha_MLP.py:多層感知機(辨識成功率70%) , Captcha_CNN.py:CNN卷積學習(辨識成功率100%) </br>
 1.先將產生出的Captcha訓練與驗證圖片放入本機資料夾內 , 產生圖片程式可參考以下連結: </br>
 https://github.com/aechen1202/CaptchaApp </br>
 2.訓練圖片0 ~ 8 大小50x50各1000張 , 9大小50x50 3000張 </br>
